@@ -1,0 +1,154 @@
+<html>
+<head><title>order From</title>
+	<SCRIPT>
+		//function to calculate the total feild
+		function Total0
+		{var tot=0;
+		 tot+=(240*document.order.qty1.value);
+		 tot+=(270*document.order.qty2.value);
+		 tot+=(300*document.order.qty3.value);
+		 tot+=(600*document.order.qty4.value);
+		 
+		 document.order.totalcost.value=tot;}
+		
+		//function to update cost when quntity is changed function UpdateCost(number,unitcost)
+		{costname="cost"+number;qtyname="qty"+number;
+		 
+var q=document.order[qtyname].value;
+		 
+document.order[costname].value=q*unitcost;
+		 Total()
+		}
+		
+//function to copy billing address to shipping address function CopyAddress()
+		{if(document.order.same.checked)
+		{document.order.shipto.value=document.order.
+billt.value;
+		}
+		}
+		//global variable for error flag
+		var errfound=flase;
+		
+		//function to validate by lenth 
+		function ValidLenth(item,len)
+		
+		{retun(item.lenth>=len);}
+		
+		//function to validate an email address function  ValidEmail(item)
+		{if(!ValidLenth(item,5))retun flase;
+		 if(item.indexOf('@',0)==-1)
+			 return false;
+		 return true;
+		}
+		
+		//display an error alert
+		function error(elem,text)
+		{
+			//about if we already found an error if(errfound)return;
+			window.alert(text);
+			elem.select();
+			elem.focus();
+			errfound=true;
+		}
+		
+		//main validation function
+		function Validate()
+		{
+			errfound=false;
+			if(!ValidLenth(document.order.name1.value,6))
+				error(document.order.name1,"invalid Name");
+			if(!ValidLenth(document.order.phone.value,10))
+				error(document.order.phone,"Invalid Phone");
+			if(!ValidLenth(document.order.phone.value,10))
+				error(document.order.phone,"Invalid Phone");
+			if(!ValidLenth(document.order.billot.value,30))
+error(document.order.billot,"Invalid Billing 
+	  Address");
+	  if(!ValidLenth(document.order.shipto.value,30))
+error(document.order.billto,"Invalid Billing 
+	  Address");
+	  if(!ValidLenth(document.order.shipto.value,30))
+error(document.order.shipto,"Invalid Shipping Address");
+			if(!ValidEmail(document.order.email.value))
+				error(document.order.email,"Invalid Email Address");
+			if(document.order.totalcost.value=="")
+				error(document.order.qty1,"Please Order at least one item.");
+			if(document.order.payby.selectedindex1=1)
+			{
+				if(!validLenth(document.order.credito.value,2))
+					error(document.order.credito,"Invalid Credit/Check number");
+			}
+			return!errfound;/*true if ther are no errors*/}
+		</script></head>
+	<body>
+	<h1>Online Cake Order From</h1>
+	<FROM NAME="order"onSubmit="return Validate();">
+		<B>Name:</B>
+	<INPUT TYPE="text"NAME="name1"SIZE=20>
+		<B>Phone:</B>
+	<INPUT TYPE="text"name="phone"SIZE=15>
+		<B>E-mail address:</B>
+	<INPUT TYPE="text"NAME="email"SIZE=20><BR><BR>
+		<B>ShippingAddress:</B>
+		<BR>
+			<TEXTAREA NAME="shipto"COLS=40 ROW=4 onChange="COPY Address();">Enter your shipping address here.</TEXTAREA>
+														   <B>Products to Order:</B><BR>
+														   Qty: <INPUT TYPE="TEXT" NAME="qty"VALUE="0" SIZE=4 onchange="UpdateCost(1,240);">
+																									  
+																									Cost:<INPUT="TEXT" NAME="cost"SIZE=6>(Rs,240)vanila cake
+			<BR>
+				Qty:<INPUT TYPE="TEXT"NAME="qty2" VALUE="0" SIZE=4
+			onchange="UpdateCost(2,270);">	
+											cost;<INPUT TYPE="TEXT"NAME="cost2"SIZE=6>
+				(Rs,270)strawberry cake
+				<BR>
+		Qty:<INPUT TYPE="TEXT"NAME="qty2"VALUE="0" SIZE=4
+				   onchange="UpdateCost(3,300);">
+					cost:<INPUT TYPE="TEXT"NAME="cost3"SIZE=6>(RS.300)
+					Black Foret cake
+					<BR>
+						Qty:<INPUT TUYPE="TEXT"NAME="qty"VALUE="0"SIZE=4
+			onchange="UpdateCost(4,600);">
+	cost:<INPUT TYPE="TEXT"NAME="cost"SIZE=6>(Rs.600)chocolate cake
+	<HR> <B>Total Cost;</B> <INPUT TYPE="TEXT"NAME="Total Cost"SIZE=8><HR><B>
+		
+		Method of Payment</B>					<SELECT NAME="payby"><OFTION VALUE="check"SELECT>
+Check or Mony Order
+		<OPTION VALUE="case">Case or Cashier's Check
+	<OPTION VALUE="credit">Credit Card(specify number)
+		</SELECT><BR><B>Credit Card or Check Number:</B>
+	
+INPUT TYPE="TEXT"NAME="creditno"SIZE="20"><BR>	
+<INPUT TYPE="SUBMIT"NAME="submit"VALUE="send your onli">
+	<INPUT TYPE="RESET"VALUE="Clear Form">
+		</form>
+	
+	
+	
+	
+	
+	
+	
+	</body>
+				
+		 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</head>
+</html>
